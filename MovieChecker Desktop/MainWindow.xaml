@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieChecker_Desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MovieChecker Desktop -UNDER DEVELOPMENT-" Height="376.64" Width="570.013" Background="#FFDADADA">
     <Grid>
-        
+        <Button Content="Show top 10 movies" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="84" FontSize="8" Height="29"/>
+        <Button Content="Show top 10 series" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="84" FontSize="8" Height="29"/>
+        <Button Content="Show top 10 movies" HorizontalAlignment="Left" Margin="190,10,0,0" VerticalAlignment="Top" Width="84" FontSize="8" Height="29"/>
+        <Button Content="Only action" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Width="84" FontSize="8" Height="29"/>
+        <Button Content="Only drama" HorizontalAlignment="Left" Margin="370,10,0,0" VerticalAlignment="Top" Width="84" FontSize="8" Height="29"/>
+        <Button Content="Only sci-fi" HorizontalAlignment="Left" Margin="460,10,0,0" VerticalAlignment="Top" Width="84" FontSize="8" Height="29"/>
+
+        <ListBox HorizontalAlignment="Left" Height="296" Margin="10,44,0,0" VerticalAlignment="Top" Width="267"/>
+
+        <ComboBox x:Name="genreBox" HorizontalAlignment="Left" Margin="282,52,0,0" VerticalAlignment="Top" Width="120" Height="23"/>
+
+        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Height="23" Margin="407,52,0,0" TextWrapping="Wrap" Text="movie/tv series title" VerticalAlignment="Top" Width="137"/>
+        <TextBox x:Name="directorTextBox" HorizontalAlignment="Left" Height="23" Margin="282,82,0,0" TextWrapping="Wrap" Text="director name" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="producentTextBox" HorizontalAlignment="Left" Height="23" Margin="407,82,0,0" TextWrapping="Wrap" Text="producent name" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="actorTextBox" HorizontalAlignment="Left" Height="23" Margin="282 112,0,0" TextWrapping="Wrap" Text="actor name" VerticalAlignment="Top" Width="120"/>
+
+        <Button x:Name="searchButton" Content="Search" HorizontalAlignment="Left" Margin="426,112,0,0" VerticalAlignment="Top" Width="75" Click="SearchButton_OnClick"/>
+
     </Grid>
 </Window>
