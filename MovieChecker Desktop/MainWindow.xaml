@@ -14,7 +14,7 @@
         <Button Content="Only drama" HorizontalAlignment="Left" Margin="370,10,0,0" VerticalAlignment="Top" Width="84" FontSize="8" Height="29"/>
         <Button Content="Only sci-fi" HorizontalAlignment="Left" Margin="460,10,0,0" VerticalAlignment="Top" Width="84" FontSize="8" Height="29"/>
 
-        <ListBox HorizontalAlignment="Left" Height="296" Margin="10,44,0,0" VerticalAlignment="Top" Width="267"/>
+        <ListBox x:Name="resultsListBox" HorizontalAlignment="Left" Height="296" Margin="10,44,0,0" VerticalAlignment="Top" Width="267"/>
 
         <ComboBox x:Name="genreBox" HorizontalAlignment="Left" Margin="282,52,0,0" VerticalAlignment="Top" Width="120" Height="23" SelectionChanged="genreBox_SelectionChanged"/>
 
