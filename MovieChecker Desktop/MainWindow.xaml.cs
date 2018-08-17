@@ -61,21 +61,24 @@ namespace MovieChecker_Desktop
             foreach (var result in results.Results)
             {
                 List<ListBoxItem> newItems = new List<ListBoxItem>();
-                foreach (var res in result.KnownFor)
-                {
-                    ListBoxItem newItem = new ListBoxItem();
-                    int id = res.Id;
-
-                    Movie newMovie = client.GetMovieAsync(id).Result;
-                    newItem.Content = newMovie.Title;
-
-                    newItems.Add(newItem);
-                }
+                GetMovie(result, newItems);
 
                 foreach (var item in newItems)
-                {
                     resultsListBox.Items.Add(item);
-                }
+            }
+        }
+
+        private void GetMovie(SearchPerson result, List<ListBoxItem> newItems)
+        {
+            foreach (var res in result.KnownFor)
+            {
+                ListBoxItem newItem = new ListBoxItem();
+                int id = res.Id;
+
+                Movie newMovie = client.GetMovieAsync(id).Result;
+                newItem.Content = newMovie.Title;
+
+                newItems.Add(newItem);
             }
         }
 
@@ -90,11 +93,7 @@ namespace MovieChecker_Desktop
             }
         }
 
-        private void CleanResultsListBox()
-        {
-            resultsListBox.Items.Clear();
-        }
-
+        private void CleanResultsListBox() => resultsListBox.Items.Clear();
 
         private void LoadGenres()
         {
