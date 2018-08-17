@@ -16,6 +16,7 @@ using MovieChecker_Desktop.Classes;
 using TMDbLib.Client;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.Genres;
+using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.Search;
 
 namespace MovieChecker_Desktop
@@ -25,14 +26,8 @@ namespace MovieChecker_Desktop
     {
         private readonly string apiKey = Loader.LoadTextFile("Key/API_Key.txt");
 
-        enum Genres
-        {
-
-        }
-
         private TMDbClient client = null;
-        private bool genreChosen = false;
-        private Genres genresEnum;
+        private string genre = String.Empty;
 
         public MainWindow()
         {
@@ -43,19 +38,63 @@ namespace MovieChecker_Desktop
 
         private void SearchButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if ()
+            CleanResultsListBox();
+            if (genre != String.Empty)
             {
-                
+                SearchByGenre();
+            }
+
+            if (actorTextBox.Text != String.Empty)
+            {
+                SearchByPerson(actorTextBox.Text);
+            }
+
+            if (directorTextBox.Text != String.Empty)
+            {
+                SearchByPerson(directorTextBox.Text);
             }
         }
 
-        private bool CheckFields()
+        private void SearchByPerson(string person)
         {
+            var results = client.SearchPersonAsync(person).Result;
+            foreach (var result in results.Results)
+            {
+                List<ListBoxItem> newItems = new List<ListBoxItem>();
+                foreach (var res in result.KnownFor)
+                {
+                    ListBoxItem newItem = new ListBoxItem();
+                    int id = res.Id;
 
+                    Movie newMovie = client.GetMovieAsync(id).Result;
+                    newItem.Content = newMovie.Title;
 
+                    newItems.Add(newItem);
+                }
 
-            return false;
+                foreach (var item in newItems)
+                {
+                    resultsListBox.Items.Add(item);
+                }
+            }
         }
+
+        private void SearchByGenre()
+        {
+            var results = client.SearchKeywordAsync(genre).Result;
+            foreach (var result in results.Results)
+            {
+                ListBoxItem newItem = new ListBoxItem();
+                newItem.Content = result.Name;
+                resultsListBox.Items.Add(newItem);
+            }
+        }
+
+        private void CleanResultsListBox()
+        {
+            resultsListBox.Items.Clear();
+        }
+
 
         private void LoadGenres()
         {
@@ -72,8 +111,8 @@ namespace MovieChecker_Desktop
 
         private void genreBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            genreChosen = true;
-
+            ComboBoxItem currentItem  = (ComboBoxItem)genreBox.SelectedItem;
+            genre = currentItem.Content.ToString();
         }
     }
 }
