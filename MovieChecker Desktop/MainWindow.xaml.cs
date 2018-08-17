@@ -27,19 +27,42 @@ namespace MovieChecker_Desktop
         private void SearchButton_OnClick(object sender, RoutedEventArgs e)
         {
             CleanResultsListBox();
+
             if (genre != String.Empty)
-            {
                 SearchByGenre();
-            }
 
             if (actorTextBox.Text != String.Empty)
-            {
                 SearchByPerson(actorTextBox.Text);
-            }
 
-            if (directorTextBox.Text != String.Empty)
+            if (titleTextBox.Text != String.Empty)
+                SearchByTitle();
+        }
+
+        private void SearchByTitle()
+        {
+            GetMoviesByTitle();
+            GetSeriesByTitle();
+        }
+
+        private void GetMoviesByTitle()
+        {
+            var results = client.SearchMovieAsync(titleTextBox.Text).Result;
+            foreach (var result in results.Results)
             {
-                SearchByPerson(directorTextBox.Text);
+                ListBoxItem newItem = new ListBoxItem();
+                newItem.Content = result.Title;
+                resultsListBox.Items.Add(newItem);
+            }
+        }
+
+        private void GetSeriesByTitle()
+        {
+            var seriesResults = client.SearchTvShowAsync(titleTextBox.Text).Result;
+            foreach (var result in seriesResults.Results)
+            {
+                ListBoxItem newItem = new ListBoxItem();
+                newItem.Content = result.Name;
+                resultsListBox.Items.Add(newItem);
             }
         }
 
