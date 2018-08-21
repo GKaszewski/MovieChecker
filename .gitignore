@@ -1,14 +1,11 @@
 #Folders
 .vs/
-MovieChecker Android/obj/
-MovieChecker Android/bin/
 MovieChecker Desktop/obj/
 MovieChecker Desktop/bin/
 packages/
+MovieChecker Python/.idea/
 
 #Files
 MovieChecker.sln
 MovieChecker Desktop/packages.config
 MovieChecker Desktop/MovieChecker Desktop.csproj
-MovieChecker Android/MovieChecker Android.csproj
-MovieChecker Android/GettingStarted.Xamarin
