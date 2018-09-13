@@ -1,11 +1,14 @@
 #Folders
-.vs/
-MovieChecker Desktop/obj/
-MovieChecker Desktop/bin/
-packages/
-MovieChecker Python/.idea/
+Project/.idea
+Project/.gradle
+Project/gradle
+Graphics/
 
 #Files
-MovieChecker.sln
-MovieChecker Desktop/packages.config
-MovieChecker Desktop/MovieChecker Desktop.csproj
+Project/build.gradle
+Project/settings.gradle
+Project/gradle.properties
+Project/local.properties
+Project/Project.iml
+Project/gradlew
+Project/gradlew.bat
