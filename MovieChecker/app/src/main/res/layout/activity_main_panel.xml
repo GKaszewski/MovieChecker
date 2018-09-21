@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainPanel">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/searchMovieByTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="5sp"
+                android:text="Search a movie by Title"
+                android:textColor="@color/labelColor"/>
+
+            <LinearLayout
+                android:id="@+id/titleSearchLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/titleTextbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundedbox"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10sp"
+                    android:text="The Avengers"
+                    android:textColor="@color/textColor"/>
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundedbox"
+                    tools:background="@color/colorPrimary"
+                    android:text="Search"
+                    android:textColor="#fff"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Genres" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Actor name" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/genresAndActorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/genresDropdown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="39sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:entries="@array/genresList" />
+
+                <EditText
+                    android:id="@+id/actorTextbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundedbox"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10sp"
+                    android:textColor="@color/textColor"
+                    android:text="Karen Gillan" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/filterSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:text="Filter settings" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:id="@+id/row1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/topRatedMovies_Checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:text="@string/filter_option_1"
+                        app:buttonTint="@color/colorPrimary"
+                        android:textColor="@color/labelColor"/>
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/upcomingMovies_Checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:text="@string/filter_option_2"
+                        app:buttonTint="@color/colorPrimary"
+                        android:textColor="@color/labelColor"/>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5sp">
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/nowPlaying_Checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:text="@string/filter_option_3"
+                        app:buttonTint="@color/colorPrimary"
+                        android:textColor="@color/labelColor"/>
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/popularMovies_Checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:text="@string/filter_option_4"
+                        app:buttonTint="@color/colorPrimary"
+                        android:textColor="@color/labelColor"/>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5sp">
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/topRatedTvShows_Checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:text="@string/filter_option_5"
+                        app:buttonTint="@color/colorPrimary"
+                        android:textColor="@color/labelColor"/>
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/onAirTvShows_Checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:text="@string/filter_option_6"
+                        app:buttonTint="@color/colorPrimary"
+                        android:textColor="@color/labelColor"/>
+                </TableRow>
+
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="10sp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/prev_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5sp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/prevButton"
+                    android:textColor="@color/bgColor" />
+
+                <ImageView
+                    android:layout_width="300sp"
+                    android:layout_height="300sp" />
+
+                <Button
+                    android:id="@+id/next_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/nextButton"
+                    android:textColor="@color/bgColor" />
+
+            </LinearLayout>
+
+            <android.support.design.widget.BottomNavigationView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark">
+
+                <ImageButton
+                    android:layout_width="48sp"
+                    android:layout_height="48sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:background="@drawable/circlebutton"
+                    android:src="@drawable/profile_icon"
+                    android:tint="#000" />
+
+                <ImageButton
+                    android:layout_width="48sp"
+                    android:layout_height="48sp"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="60sp"
+                    android:background="@drawable/circlebutton"
+                    android:src="@drawable/settings_icon"
+                    android:tint="#fff"
+                    tools:background="@android:color/transparent" />
+
+                <ImageButton
+                    android:layout_width="48sp"
+                    android:layout_height="48sp"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:background="@drawable/circlebutton"
+                    android:src="@drawable/about_icon"
+                    android:tint="#fff"
+                    tools:background="@android:color/transparent" />
+
+            </android.support.design.widget.BottomNavigationView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

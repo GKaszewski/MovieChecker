@@ -1,14 +1,14 @@
 #Folders
-Project/.idea
-Project/.gradle
-Project/gradle
+MovieChecker/.idea
+MovieChecker/.gradle
+MovieChecker/gradle
 Graphics/
 
 #Files
-Project/build.gradle
-Project/settings.gradle
-Project/gradle.properties
-Project/local.properties
-Project/Project.iml
-Project/gradlew
-Project/gradlew.bat
+MovieChecker/build.gradle
+MovieChecker/settings.gradle
+MovieChecker/gradle.properties
+MovieChecker/local.properties
+MovieChecker/MovieChecker.iml
+MovieChecker/gradlew
+MovieChecker/gradlew.bat

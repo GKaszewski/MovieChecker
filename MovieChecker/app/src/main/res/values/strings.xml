@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MovieChecker</string>
+
+    <string name="filter_option_1"> Top rated movies</string>
+    <string name="filter_option_2"> Upcoming movies</string>
+    <string name="filter_option_3"> Now playing movies</string>
+    <string name="filter_option_4"> Popular movies</string>
+    <string name="filter_option_5"> Top rated TV shows</string>
+    <string name="filter_option_6"> On the air TV shows</string>
+    <string name="nextButton"><![CDATA[>]]></string>
+    <string name="prevButton"><![CDATA[<]]></string>
+
+    <string-array name="genresList">
+
+    </string-array>
+
+</resources>
