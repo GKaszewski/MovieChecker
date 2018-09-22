@@ -50,16 +50,16 @@
                     android:textColor="@color/textColor"/>
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/search_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="40sp"
                     android:layout_marginLeft="5sp"
                     android:layout_marginRight="5sp"
                     android:layout_weight="1"
                     android:background="@drawable/roundedbox"
-                    tools:background="@color/colorPrimary"
                     android:text="Search"
-                    android:textColor="#fff"/>
+                    android:textColor="#fff"
+                    tools:background="@color/colorPrimary" />
 
             </LinearLayout>
 
@@ -230,6 +230,7 @@
                     android:textColor="@color/bgColor" />
 
                 <ImageView
+                    android:id="@+id/poster"
                     android:layout_width="300sp"
                     android:layout_height="300sp" />
 
@@ -253,6 +254,7 @@
                 android:background="@color/colorPrimaryDark">
 
                 <ImageButton
+                    android:id="@+id/profile_Button"
                     android:layout_width="48sp"
                     android:layout_height="48sp"
                     android:layout_gravity="center_vertical"
@@ -263,6 +265,7 @@
                     android:tint="#000" />
 
                 <ImageButton
+                    android:id="@+id/settings_Button"
                     android:layout_width="48sp"
                     android:layout_height="48sp"
                     android:layout_gravity="center_vertical|end"
@@ -274,6 +277,7 @@
                     tools:background="@android:color/transparent" />
 
                 <ImageButton
+                    android:id="@+id/about_Button"
                     android:layout_width="48sp"
                     android:layout_height="48sp"
                     android:layout_gravity="center_vertical|end"
