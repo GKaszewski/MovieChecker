@@ -2,12 +2,15 @@ package com.dev.gabriel.moviechecker;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -27,12 +30,14 @@ public class MainPanel extends AppCompatActivity
     CheckBox option1, option2, option3, option4, option5, option6;
     EditText titleTextBox, actorTextBox;
 
+    OkHttpClient client = new OkHttpClient();
+
     private void LoadAllComponents()
     {
         poster = findViewById(R.id.poster);
         actorTextBox = findViewById(R.id.actorTextbox);
         titleTextBox = findViewById(R.id.titleTextbox);
-        profileButton = (findViewById(R.id.profile_Button);
+        profileButton = findViewById(R.id.profile_Button);
         settingsButton = findViewById(R.id.settings_Button);
         aboutButton = findViewById(R.id.about_Button);
         searchButton = findViewById(R.id.search_Button);
@@ -54,9 +59,28 @@ public class MainPanel extends AppCompatActivity
 
         LoadAllComponents();
 
-        OkHttpClient client = new OkHttpClient();
+        actorName = actorTextBox.getText().toString();
+        movieTitle = titleTextBox.getText().toString();
+
+        searchButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                SearchByTitle(movieTitle);
+            }
+        });
+
+        ArrayAdapter<String> adapter;
+        genresArray = getResources().getStringArray(R.array.genresList);
+    }
+
+    public void SearchByTitle(String title)
+    {
+        String query = "https://api.themoviedb.org/3/search/movie?api_key=" + AppData.apiKey + "&language=en-US&query=" + title + "&page=1&include_adult=false";
+
         Request request = new Request.Builder()
-                .url("https://api.themoviedb.org/3/configuration/countries?api_key=f15d8142120b340d997e986cacb5b085")
+                .url(query)
                 .build();
 
         client.newCall(request).enqueue(new Callback()
@@ -72,26 +96,25 @@ public class MainPanel extends AppCompatActivity
             {
                 if (response.isSuccessful())
                 {
-                    final String resp = response.body().string();
+                    String result = response.body().string();
+                    Gson gson = new Gson();
+                    Movie movie = gson.fromJson(result, Movie.class);
 
                     MainPanel.this.runOnUiThread(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            titleTextBox.setText(resp);
+
                         }
                     });
                 }
             }
         });
+    }
 
-        ArrayAdapter<String> adapter;
-        genresArray = getResources().getStringArray(R.array.genresList);
+    private void LoadPoster()
+    {
 
-        actorName = actorTextBox.getText().toString();
-        movieTitle = titleTextBox.getText().toString();
-
-        movieTitle = AppData.apiKey;
     }
 }

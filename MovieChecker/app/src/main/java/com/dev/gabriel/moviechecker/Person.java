@@ -12,4 +12,14 @@ public class Person
     String placeOfBirth;
     String avatarURL;
     boolean adult;
+
+    public Person()
+    {
+
+    }
+
+    public void LoadAvatar()
+    {
+
+    }
 }
