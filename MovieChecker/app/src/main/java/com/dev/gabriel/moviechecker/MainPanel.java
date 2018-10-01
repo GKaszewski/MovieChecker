@@ -3,37 +3,32 @@ package com.dev.gabriel.moviechecker;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.google.gson.Gson;
+import java.util.Arrays;
+import java.util.List;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import info.movito.themoviedbapi.model.Genre;
+import info.movito.themoviedbapi.*;
 
 public class MainPanel extends AppCompatActivity
 {
+    private TmdbApi api;
     String actorName, movieTitle;
-    String[] genresArray;
+    List<String> genresList;
     ImageView poster;
     ImageButton profileButton, settingsButton, aboutButton;
     Button searchButton, nextButton, prevButton;
     CheckBox option1, option2, option3, option4, option5, option6;
     EditText titleTextBox, actorTextBox;
 
-    OkHttpClient client = new OkHttpClient();
-
     private void LoadAllComponents()
     {
+        api = new TmdbApi(AppData.apiKey);
         poster = findViewById(R.id.poster);
         actorTextBox = findViewById(R.id.actorTextbox);
         titleTextBox = findViewById(R.id.titleTextbox);
@@ -59,6 +54,17 @@ public class MainPanel extends AppCompatActivity
 
         LoadAllComponents();
 
+        TmdbGenre apiGenre = api.getGenre();
+        //List<Genre> genres = apiGenre.getGenreList(AppData.language);
+
+        genresList = Arrays.asList(getResources().getStringArray(R.array.genresList));
+
+        /*for (Genre genre : genres)
+        {
+            genresList.add(genre.getName());
+        }*/
+
+
         actorName = actorTextBox.getText().toString();
         movieTitle = titleTextBox.getText().toString();
 
@@ -69,48 +75,14 @@ public class MainPanel extends AppCompatActivity
             {
                 SearchByTitle(movieTitle);
             }
-        });
+    });
 
-        ArrayAdapter<String> adapter;
-        genresArray = getResources().getStringArray(R.array.genresList);
-    }
+    
+}
 
     public void SearchByTitle(String title)
     {
-        String query = "https://api.themoviedb.org/3/search/movie?api_key=" + AppData.apiKey + "&language=en-US&query=" + title + "&page=1&include_adult=false";
 
-        Request request = new Request.Builder()
-                .url(query)
-                .build();
-
-        client.newCall(request).enqueue(new Callback()
-        {
-            @Override
-            public void onFailure(Call call, IOException e)
-            {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException
-            {
-                if (response.isSuccessful())
-                {
-                    String result = response.body().string();
-                    Gson gson = new Gson();
-                    Movie movie = gson.fromJson(result, Movie.class);
-
-                    MainPanel.this.runOnUiThread(new Runnable()
-                    {
-                        @Override
-                        public void run()
-                        {
-
-                        }
-                    });
-                }
-            }
-        });
     }
 
     private void LoadPoster()
